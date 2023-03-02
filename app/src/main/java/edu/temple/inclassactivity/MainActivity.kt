@@ -26,11 +26,12 @@ class MainActivity : AppCompatActivity() {
         // Display images specified in imageArray in Spinner and RecyclerView
         val customRecyclerAdapter = CustomRecyclerAdapter(imageArray)
         val customSpinnerAdapter: CustomSpinnerAdapter = CustomSpinnerAdapter(getApplicationContext(), imageArray)
-        if(recyclerView == null) {
+        if(spinner != null) {
             spinner.adapter = customSpinnerAdapter
         }
-        if(spinner == null) {
+        if(recyclerView != null) {
             recyclerView.adapter = customRecyclerAdapter
+            recyclerView.layoutManager = GridLayoutManager(getApplicationContext(), 2)
         }
 
     }
