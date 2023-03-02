@@ -21,7 +21,17 @@ class MainActivity : AppCompatActivity() {
         val imageArray = Array(typedArray.length()) {typedArray.getResourceId(it, 0)}
         typedArray.recycle()
 
+
+
         // Display images specified in imageArray in Spinner and RecyclerView
+        val customRecyclerAdapter = CustomRecyclerAdapter(imageArray)
+        val customSpinnerAdapter: CustomSpinnerAdapter = CustomSpinnerAdapter(getApplicationContext(), imageArray)
+        if(recyclerView == null) {
+            spinner.adapter = customSpinnerAdapter
+        }
+        if(spinner == null) {
+            recyclerView.adapter = customRecyclerAdapter
+        }
 
     }
 }
